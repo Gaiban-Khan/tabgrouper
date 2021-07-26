@@ -87,7 +87,7 @@ case "$option" in
     else
       echo "Group $(basename "$groupName") not found :("
       echo "You can create it using '-n'"
-    fi 
+    fi
   else
       echo "Invalid arguments :("
       echo "Usage: tabgrouper -a [Group Name]"
