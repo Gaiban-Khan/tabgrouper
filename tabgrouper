@@ -68,6 +68,24 @@ openLinks () {
 
 }
 
+editLinks () {
+
+  printf "Enter name of the website:  "
+  read -r websiteName
+  if grep -xq "$websiteName" "$groupName"
+  then
+      sed -i "" "/$websiteName/,+1 d" "$groupName"
+      printf "New link:  "
+      read -r link
+      echo "$websiteName" >> "$groupName"
+      echo "$link" >> "$groupName"
+    echo "Link edited successfully!"
+  else
+    echo "$websiteName is not present in group $(basename "$groupName")"
+  fi
+
+}
+
 case "$option" in
 -n|--new) # new group.
   printf "Enter the name of the group:  "
@@ -173,6 +191,32 @@ case "$option" in
       echo "Usage: tabgrouper -o [Group Name]"
   fi
   exit ;;
+
+-el|--editlink) # edit links.
+  if [ $# -eq 1 ]
+  then
+    groupName="$HOME/.tabgrouper/$1"
+    shift 1
+    if [ -f "$groupName" ]
+    then
+      while true
+      do
+        editLinks
+        printf "Do you wanna edit more links? [y/n]  "
+        read -r choice
+        if [ "$choice" == "${choice#[Yy]}" ]
+        then
+         break
+        fi
+      done
+    else
+      echo "Group $(basename "$groupName") not found :("
+    fi
+  else
+    echo "Invalid arguments :("
+    echo "Usage: tabgrouper -el [Group Name]"
+  fi
+  exit;;
 
 *)
   echo "-n for new group"
