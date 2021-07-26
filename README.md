@@ -6,7 +6,7 @@ You can create multiple groups!
 > Example: You can have a group of websites for work. Using tabgrouper, you can open all the grouped websites easily at once!
 
 &nbsp;  
-Add it to path and use it effortlessly.
+Add it to path and use it everywhere.
 > Example: Add **tabgrouper** file to /usr/local/bin on macOS.
 
 <h2> How to use? </h2>
