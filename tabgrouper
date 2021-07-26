@@ -88,7 +88,7 @@ editLinks () {
 
 case "$option" in
 -n|--new) # new group.
-  printf "Enter the name of the group:  "
+  printf "Enter the name of the group (one-word):  "
   read -r groupName
   groupName="$HOME/.tabgrouper/$groupName"
   touch "$groupName"
