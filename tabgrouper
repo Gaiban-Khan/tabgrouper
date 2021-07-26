@@ -222,6 +222,7 @@ case "$option" in
   echo "-n for new group"
   echo "-a to add links to an existing group"
   echo "-l to list all the links present in a group"
+  echo "-el to edit existing links"
   echo "-lg to list groups"
   echo "-rl to remove links in a group"
   echo "-rg to remove groups"
