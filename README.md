@@ -24,6 +24,9 @@ Add it to path and use it everywhere.
  <li><strong>List links in the group(s):</strong></li>
  <code>tabgrouper -l|--listlinks [Group Name]...</code>
   <p>&nbsp;</p>
+ <li><strong>Edit an existing link in a group:</strong></li>
+ <code>tabgrouper -el|--editlink [Group Name]</code>
+  <p>&nbsp;</p>
  <li><strong>Remove a link/website from the group:</strong></li>
  <code>tabgrouper -rl|--removelink [Group Name] [Website Name]</code>
   <p>&nbsp;</p>
