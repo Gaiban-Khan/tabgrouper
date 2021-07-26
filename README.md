@@ -2,6 +2,7 @@
 # tabgrouper
 A simple bash script to help you group your favorite websites, and open them easily from your terminal.
 
+You can create multiple groups!
 > Example: You can have a group of websites for work. Using tabgrouper, you can open all the grouped websites easily at once!
 
 &nbsp;  
