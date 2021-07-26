@@ -8,6 +8,7 @@ A simple bash script to help you group your favorite websites, and open them eas
 &nbsp;  
 Add it to path and use it effortlessly.
 > Example: Add **tabgrouper** file to /usr/local/bin on macOS.
+
 <h2> How to use? </h2>
 
 <ul>
