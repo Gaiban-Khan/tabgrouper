@@ -14,8 +14,26 @@ readLinks () {
   do
     printf "Enter the name of the website:  "
     read -r websiteName
+    if [ -z "$websiteName" ]
+    then
+       while [ -z "$websiteName" ]
+       do
+         echo "Website name cannot be empty!"
+         printf "Enter the name of the website:  "
+         read -r websiteName
+       done
+    fi
     printf "Enter the link:  "
     read -r link
+    if [ -z "$link" ]
+    then
+       while [ -z "$link" ]
+       do
+         echo "Link cannot be empty!"
+         printf "Enter the link:  "
+         read -r link
+       done
+    fi
     if [ -f "$groupName" ]
     then
       echo "$websiteName" >> "$groupName"
@@ -72,11 +90,29 @@ editLinks () {
 
   printf "Enter name of the website:  "
   read -r websiteName
+  if [ -z "$websiteName" ]
+    then
+       while [ -z "$websiteName" ]
+       do
+         echo "Website name cannot be empty!"
+         printf "Enter name of the website:  "
+         read -r websiteName
+       done
+    fi
   if grep -xq "$websiteName" "$groupName"
   then
       sed -i "" "/$websiteName/,+1 d" "$groupName"
       printf "New link:  "
       read -r link
+      if [ -z "$link" ]
+    then
+       while [ -z "$link" ]
+       do
+         echo "Link cannot be empty!"
+         printf "New link:  "
+         read -r link
+       done
+    fi
       echo "$websiteName" >> "$groupName"
       echo "$link" >> "$groupName"
     echo "Link edited successfully!"
@@ -88,8 +124,24 @@ editLinks () {
 
 case "$option" in
 -n|--new) # new group.
-  printf "Enter the name of the group:  "
+  printf "Enter the name of the group (one-word):  "
   read -r groupName
+  if [[ "$groupName" == *" "* || -z "$groupName" ]]
+  then
+    while [[ "$groupName" = *" "* || -z "$groupName" ]]
+    do
+      if [ -z "$groupName" ]
+      then
+        echo "Group name cannot be empty!"
+      fi
+      if [[ "$groupName" = *" "* ]]
+      then
+        echo "Group name must be a single word!"
+      fi
+      printf "Enter the name of the group (one-word):  "
+      read -r groupName
+    done
+  fi
   groupName="$HOME/.tabgrouper/$groupName"
   touch "$groupName"
   readLinks
@@ -143,7 +195,13 @@ case "$option" in
     if [ -f "$groupName" ]
     then
       shift 1
-      sed -i "" "/$*/,+1 d" "$groupName"
+      if grep -xq "$*" "$groupName"
+      then
+        sed -i "" "/$*/,+1 d" "$groupName"
+        echo "$* has been removed successfully!"
+      else
+        echo "$* isn't present in group $(basename "$groupName")"
+      fi
     else
       echo "Group $(basename "$groupName") not found :("
     fi
