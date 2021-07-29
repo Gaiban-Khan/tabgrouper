@@ -126,22 +126,19 @@ case "$option" in
 -n|--new) # new group.
   printf "Enter the name of the group (one-word):  "
   read -r groupName
-  if [[ "$groupName" == *" "* || -z "$groupName" ]]
-  then
-    while [[ "$groupName" = *" "* || -z "$groupName" ]]
-    do
-      if [ -z "$groupName" ]
-      then
-        echo "Group name cannot be empty!"
-      fi
-      if [[ "$groupName" = *" "* ]]
-      then
-        echo "Group name must be a single word!"
-      fi
-      printf "Enter the name of the group (one-word):  "
-      read -r groupName
-    done
-  fi
+  while [[ "$groupName" == *" "* || -z "$groupName" ]]
+  do
+    if [ -z "$groupName" ]
+    then
+      echo "Group name cannot be empty!"
+    fi
+    if [[ "$groupName" = *" "* ]]
+    then
+      echo "Group name must be a single word!"
+    fi
+    printf "Enter the name of the group (one-word):  "
+    read -r groupName
+  done
   groupName="$HOME/.tabgrouper/$groupName"
   touch "$groupName"
   readLinks
