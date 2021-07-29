@@ -14,26 +14,20 @@ readLinks () {
   do
     printf "Enter the name of the website:  "
     read -r websiteName
-    if [ -z "$websiteName" ]
-    then
-       while [ -z "$websiteName" ]
-       do
-         echo "Website name cannot be empty!"
-         printf "Enter the name of the website:  "
-         read -r websiteName
-       done
-    fi
+     while [ -z "$websiteName" ]
+     do
+       echo "Website name cannot be empty!"
+       printf "Enter the name of the website:  "
+       read -r websiteName
+     done
     printf "Enter the link:  "
     read -r link
-    if [ -z "$link" ]
-    then
-       while [ -z "$link" ]
-       do
-         echo "Link cannot be empty!"
-         printf "Enter the link:  "
-         read -r link
-       done
-    fi
+   while [ -z "$link" ]
+   do
+     echo "Link cannot be empty!"
+     printf "Enter the link:  "
+     read -r link
+   done
     if [ -f "$groupName" ]
     then
       echo "$websiteName" >> "$groupName"
@@ -90,29 +84,23 @@ editLinks () {
 
   printf "Enter name of the website:  "
   read -r websiteName
-  if [ -z "$websiteName" ]
-    then
-       while [ -z "$websiteName" ]
-       do
-         echo "Website name cannot be empty!"
-         printf "Enter name of the website:  "
-         read -r websiteName
-       done
-    fi
+   while [ -z "$websiteName" ]
+   do
+     echo "Website name cannot be empty!"
+     printf "Enter name of the website:  "
+     read -r websiteName
+   done
   if grep -xq "$websiteName" "$groupName"
   then
       sed -i "" "/$websiteName/,+1 d" "$groupName"
       printf "New link:  "
       read -r link
-      if [ -z "$link" ]
-    then
-       while [ -z "$link" ]
-       do
+      while [ -z "$link" ]
+      do
          echo "Link cannot be empty!"
          printf "New link:  "
          read -r link
-       done
-    fi
+      done
       echo "$websiteName" >> "$groupName"
       echo "$link" >> "$groupName"
     echo "Link edited successfully!"
