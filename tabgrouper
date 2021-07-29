@@ -14,27 +14,32 @@ readLinks () {
   do
     printf "Enter the name of the website:  "
     read -r websiteName
-     while [ -z "$websiteName" ]
-     do
-       echo "Website name cannot be empty!"
-       printf "Enter the name of the website:  "
-       read -r websiteName
-     done
-    printf "Enter the link:  "
-    read -r link
-   while [ -z "$link" ]
-   do
-     echo "Link cannot be empty!"
-     printf "Enter the link:  "
-     read -r link
-   done
-    if [ -f "$groupName" ]
+    if grep -xq "$websiteName" "$groupName"
     then
-      echo "$websiteName" >> "$groupName"
-      echo "$link" >> "$groupName"
-      echo "Added $websiteName to $(basename "$groupName") successfully!"
+      echo "$websiteName already exits in $(basename "$groupName")!"
     else
-      echo "Operation unsuccessful :("
+       while [ -z "$websiteName" ]
+       do
+         echo "Website name cannot be empty!"
+         printf "Enter the name of the website:  "
+         read -r websiteName
+       done
+      printf "Enter the link:  "
+      read -r link
+      while [ -z "$link" ]
+      do
+       echo "Link cannot be empty!"
+       printf "Enter the link:  "
+       read -r link
+      done
+      if [ -f "$groupName" ]
+      then
+        echo "$websiteName" >> "$groupName"
+        echo "$link" >> "$groupName"
+        echo "Added $websiteName to $(basename "$groupName") successfully!"
+      else
+        echo "Operation unsuccessful :("
+      fi
     fi
 
     printf "Do you wanna continue? [y/n]  "
@@ -128,8 +133,13 @@ case "$option" in
     read -r groupName
   done
   groupName="$HOME/.tabgrouper/$groupName"
-  touch "$groupName"
-  readLinks
+  if [ -f "$groupName" ]
+  then
+    echo "Group $(basename "$groupName") already exists!"
+  else
+    touch "$groupName"
+    readLinks
+  fi
   exit ;;
 
 -a|--add) # add links.
