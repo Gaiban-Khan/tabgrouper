@@ -12,12 +12,6 @@ Add it to path and use it everywhere.
 <h2> How to use? </h2>
 
 <ul>
- <li><strong>Create a new group:</strong></li>
- <code>tabgrouper -n|--new </code>
- <p>&nbsp;</p>
- <li><strong>Add links to an existing group:</strong></li>
- <code>tabgrouper -a|--add [Group Name]</code>
- <p>&nbsp;</p>
  <li><strong>Open links in the group(s) (default browser):</strong></li>
  <code>tabgrouper -o|--open [Group Name]...</code>
   <p>&nbsp;</p>
