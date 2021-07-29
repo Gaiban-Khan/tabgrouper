@@ -12,43 +12,41 @@ readLinks () {
 
   while true
   do
-    printf "Enter the name of the website:  "
-    read -r websiteName
-    if grep -xq "$websiteName" "$groupName"
-    then
-      echo "$websiteName already exits in $(basename "$groupName")!"
-    else
-       while [ -z "$websiteName" ]
-       do
-         echo "Website name cannot be empty!"
-         printf "Enter the name of the website:  "
-         read -r websiteName
-       done
-      printf "Enter the link:  "
-      read -r link
-      while [ -z "$link" ]
-      do
-       echo "Link cannot be empty!"
-       printf "Enter the link:  "
-       read -r link
-      done
-      if [ -f "$groupName" ]
-      then
-        echo "$websiteName" >> "$groupName"
-        echo "$link" >> "$groupName"
-        echo "Added $websiteName to $(basename "$groupName") successfully!"
+  printf "Enter the name of the website:  "
+  read -r websiteName
+     while [ -z "$websiteName" ]
+     do
+       echo "Website name cannot be empty!"
+       printf "Enter the name of the website:  "
+       read -r websiteName
+     done
+     if grep -xq "$websiteName" "$groupName"
+     then
+       echo "$websiteName already exists in $(basename "$groupName")!"
       else
-        echo "Operation unsuccessful :("
+        printf "Enter the link:  "
+        read -r link
+        while [ -z "$link" ]
+        do
+         echo "Link cannot be empty!"
+         printf "Enter the link:  "
+         read -r link
+        done
+        if [ -f "$groupName" ]
+        then
+          echo "$websiteName" >> "$groupName"
+          echo "$link" >> "$groupName"
+          echo "Added $websiteName to $(basename "$groupName") successfully!"
+        else
+          echo "Operation unsuccessful :("
+        fi
+        printf "Do you wanna continue? [y/n]  "
+        read -r choice
+        if [ "$choice" == "${choice#[Yy]}" ]
+        then
+          break
       fi
     fi
-
-    printf "Do you wanna continue? [y/n]  "
-    read -r choice
-    if [ "$choice" == "${choice#[Yy]}" ]
-    then
-      break
-    fi
-
   done
 
 }
