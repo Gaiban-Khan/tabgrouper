@@ -172,7 +172,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -l [Group Name]"
+      echo "Usage: tabgrouper -l [Group Name]..."
   fi
   exit ;;
 
@@ -220,7 +220,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -rg [Group Name]"
+      echo "Usage: tabgrouper -rg [Group Name]..."
   fi
   exit ;;
 
@@ -239,7 +239,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -o [Group Name]"
+      echo "Usage: tabgrouper -o [Group Name]..."
   fi
   exit ;;
 
