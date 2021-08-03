@@ -20,7 +20,7 @@ readLinks () {
        printf "Enter the name of the website:  "
        read -r websiteName
      done
-     if grep -xq "$websiteName" "$groupName"
+     if grep -ixq "$websiteName" "$groupName"
      then
        echo "$websiteName already exists in $(basename "$groupName")!"
       else
@@ -93,7 +93,7 @@ editLinks () {
      printf "Enter name of the website:  "
      read -r websiteName
    done
-  if grep -xq "$websiteName" "$groupName"
+  if grep -ixq "$websiteName" "$groupName"
   then
       sed -i "" "/$websiteName/,+1 d" "$groupName"
       printf "New link:  "
@@ -188,7 +188,7 @@ case "$option" in
     if [ -f "$groupName" ]
     then
       shift 1
-      if grep -xq "$*" "$groupName"
+      if grep -ixq "$*" "$groupName"
       then
         sed -i "" "/$*/,+1 d" "$groupName"
         echo "$* has been removed successfully!"
