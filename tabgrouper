@@ -8,6 +8,8 @@ then
   mkdir ~/.tabgrouper
 fi
 
+osName=$(uname)
+
 readLinks () {
 
   while true
@@ -40,12 +42,12 @@ readLinks () {
         else
           echo "Operation unsuccessful :("
         fi
-        printf "Do you wanna continue? [y/n]  "
-        read -r choice
-        if [ "$choice" == "${choice#[Yy]}" ]
-        then
-          break
-      fi
+    fi
+    printf "Do you wanna continue? [y/n]  "
+      read -r choice
+      if [ "$choice" == "${choice#[Yy]}" ]
+      then
+        break
     fi
   done
 
@@ -76,7 +78,12 @@ openLinks () {
   do
     if ((i % 2 != 0))
     then
-      open "$line"
+      if [[ "$osName" == "Darwin"  ]]
+      then
+        open "$line"
+      else
+        xdg-open "$line"
+      fi
     fi
     i=$((i + 1))
   done < "$groupName"
@@ -95,7 +102,12 @@ editLinks () {
    done
   if grep -ixq "$websiteName" "$groupName"
   then
+    if [[ "$osName" == "Darwin" ]]
+    then
       sed -i "" "/$websiteName/,+1 d" "$groupName"
+    else
+      sed -i -e "/$websiteName/,+1 d" "$groupName"
+    fi
       printf "New link:  "
       read -r link
       while [ -z "$link" ]
@@ -190,7 +202,12 @@ case "$option" in
       shift 1
       if grep -ixq "$*" "$groupName"
       then
-        sed -i "" "/$*/,+1 d" "$groupName"
+        if [[ $osName == "Darwin" ]]
+        then
+          sed -i "" "/$*/,+1 d" "$groupName"
+        else
+          sed -i -e "/$*/,+1 d" "$groupName"
+        fi
         echo "$* has been removed successfully!"
       else
         echo "$* isn't present in group $(basename "$groupName")"
