@@ -16,11 +16,13 @@ readLinks () {
   do
   printf "Enter the name of the website:  "
   read -r websiteName
+  websiteName=$(echo "$websiteName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
      while [ -z "$websiteName" ]
      do
        echo "Website name cannot be empty!"
        printf "Enter the name of the website:  "
        read -r websiteName
+       websiteName=$(echo "$websiteName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
      done
      if grep -ixq "$websiteName" "$groupName"
      then
@@ -94,11 +96,13 @@ editLinks () {
 
   printf "Enter name of the website:  "
   read -r websiteName
+  websiteName=$(echo "$websiteName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
    while [ -z "$websiteName" ]
    do
      echo "Website name cannot be empty!"
      printf "Enter name of the website:  "
      read -r websiteName
+     websiteName=$(echo "$websiteName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
    done
   if grep -ixq "$websiteName" "$groupName"
   then
@@ -129,6 +133,7 @@ case "$option" in
 -n|--new) # new group.
   printf "Enter the name of the group (one-word):  "
   read -r groupName
+  groupName=$(echo "$groupName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
   while [[ "$groupName" == *" "* || -z "$groupName" ]]
   do
     if [ -z "$groupName" ]
@@ -141,6 +146,7 @@ case "$option" in
     fi
     printf "Enter the name of the group (one-word):  "
     read -r groupName
+    groupName=$(echo "$groupName" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
   done
   groupName="$HOME/.tabgrouper/$groupName"
   if [ -f "$groupName" ]
@@ -155,7 +161,9 @@ case "$option" in
 -a|--add) # add links.
   if [ $# -eq 1 ]
   then
-    groupName="$HOME/.tabgrouper/$1"
+    group=$1
+    group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
+    groupName="$HOME/.tabgrouper/$group"
     if [ -f "$groupName" ]
     then
       readLinks
@@ -174,6 +182,7 @@ case "$option" in
   then
     for group in "$@"
     do
+      group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
       groupName="$HOME/.tabgrouper/$group"
       if [ -f "$groupName" ]
       then
@@ -196,21 +205,25 @@ case "$option" in
 -rl|--removelink) #removes link.
  if [ $# -ge 2 ]
   then
-    groupName="$HOME/.tabgrouper/$1"
+    group=$1
+    group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
+    groupName="$HOME/.tabgrouper/$group"
     if [ -f "$groupName" ]
     then
       shift 1
       if grep -ixq "$*" "$groupName"
       then
+        link=$*
+        link=$(echo "$link" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
         if [[ $osName == "Darwin" ]]
         then
-          sed -i "" "/$*/,+1 d" "$groupName"
+          sed -i "" "/$link/,+1 d" "$groupName"
         else
-          sed -i -e "/$*/,+1 d" "$groupName"
+          sed -i -e "/$link/,+1 d" "$groupName"
         fi
-        echo "$* has been removed successfully!"
+        echo "$link has been removed successfully!"
       else
-        echo "$* isn't present in group $(basename "$groupName")"
+        echo "$link isn't present in group $(basename "$groupName")"
       fi
     else
       echo "Group $(basename "$groupName") not found :("
@@ -226,6 +239,7 @@ case "$option" in
   then
     for group in "$@"
     do
+      group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
       groupName="$HOME/.tabgrouper/$group"
       if [ -f "$groupName" ]
       then
@@ -246,6 +260,7 @@ case "$option" in
   then
     for group in "$@"
     do
+      group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
       groupName="$HOME/.tabgrouper/$group"
       if [ -f "$groupName" ]
       then
@@ -263,7 +278,9 @@ case "$option" in
 -el|--editlink) # edit links.
   if [ $# -eq 1 ]
   then
-    groupName="$HOME/.tabgrouper/$1"
+    group=$1
+    group=$(echo "$group" | awk '{ print toupper( substr($0,1,1) ) tolower( substr($0,2) ) }')
+    groupName="$HOME/.tabgrouper/$group"
     shift 1
     if [ -f "$groupName" ]
     then
