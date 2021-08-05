@@ -7,7 +7,7 @@ You can create multiple groups!
 
 &nbsp;  
 Add it to path and use it everywhere.
-> Example: Add **tabgrouper** file to /usr/local/bin on macOS.
+> Add **tabgrouper** file to /usr/local/bin.
 
 <h2> How to use? </h2>
 
