@@ -19,10 +19,10 @@ Add it to path and use it everywhere.
  <code>tabgrouper -a|--add [Group Name]</code>
  <p>&nbsp;</p>
  <li><strong>Open links in the group(s) (default browser):</strong></li>
- <code>tabgrouper -o|--open [Group Name]...</code>
+ <code>tabgrouper -o|--open [Group Name...]</code>
   <p>&nbsp;</p>
  <li><strong>List links in the group(s):</strong></li>
- <code>tabgrouper -l|--listlinks [Group Name]...</code>
+ <code>tabgrouper -l|--listlinks [Group Name...]</code>
   <p>&nbsp;</p>
  <li><strong>List all groups:</strong></li>
  <code>tabgrouper -lg|--listgroups</code>
@@ -34,5 +34,5 @@ Add it to path and use it everywhere.
  <code>tabgrouper -rl|--removelink [Group Name] [Website Name]</code>
   <p>&nbsp;</p>
  <li><strong>Remove group(s):</strong></li>
- <code>tabgrouper -rg|--removegroups [Group Name]...</code>
+ <code>tabgrouper -rg|--removegroups [Group Name...]</code>
  </ul>
