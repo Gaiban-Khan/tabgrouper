@@ -32,9 +32,9 @@ Add it to path and run it from everywhere.
    ```bash
    tabgrouper -lg|--listgroups
    ```
-- **Edit an existing link in a group:**
+- **Edit existing links in a group:**
    ```bash
-   tabgrouper -el|--editlink <Group_Name>
+   tabgrouper -el|--editlinks <Group_Name>
    ```
 - **Remove a link/website from the group:**
    ```bash
