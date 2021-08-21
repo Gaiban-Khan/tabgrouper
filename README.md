@@ -18,15 +18,15 @@ Add it to path and run it from everywhere.
    ```
 - **Add links to an existing group:**
    ```bash
-   tabgrouper -a|--add [Group Name]
+   tabgrouper -a|--add <Group_Name>
    ```
 - **Open links in the group(s) (default browser):**
    ```bash
-   tabgrouper -o|--open [Group Name...]
+   tabgrouper -o|--open <Group_Name...>
    ```
 - **List links in the group(s):**
    ```bash
-   tabgrouper -l|--listlinks [Group Name...]
+   tabgrouper -l|--listlinks <Group_Name...>
    ```
 - **List all groups:**
    ```bash
@@ -34,15 +34,15 @@ Add it to path and run it from everywhere.
    ```
 - **Edit an existing link in a group:**
    ```bash
-   tabgrouper -el|--editlink [Group Name]
+   tabgrouper -el|--editlink <Group_Name>
    ```
 - **Remove a link/website from the group:**
    ```bash
-   tabgrouper -rl|--removelink [Group Name] [Website Name]
+   tabgrouper -rl|--removelink <Group_Name> <Website_Name>
    ```
 - **Remove group(s):**
    ```bash
-   tabgrouper -rg|--removegroups [Group Name...]
+   tabgrouper -rg|--removegroups <Group_Name...>
    ```
 
 ## Contributors 👨‍💻
