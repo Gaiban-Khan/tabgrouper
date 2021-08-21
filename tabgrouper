@@ -173,7 +173,7 @@ case "$option" in
     fi
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -a [Group Name]"
+      echo "Usage: tabgrouper -a <Group_Name>"
   fi
   exit ;;
 
@@ -193,7 +193,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -l [Group Name]..."
+      echo "Usage: tabgrouper -l <Group_Name...>"
   fi
   exit ;;
 
@@ -230,7 +230,7 @@ case "$option" in
     fi
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -rl [Group Name] [Website Name]"
+      echo "Usage: tabgrouper -rl <Group_Name> <Website_Name>"
   fi
   exit ;;
 
@@ -251,7 +251,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -rg [Group Name]..."
+      echo "Usage: tabgrouper -rg <Group_Name...>"
   fi
   exit ;;
 
@@ -271,7 +271,7 @@ case "$option" in
     done
   else
       echo "Invalid arguments :("
-      echo "Usage: tabgrouper -o [Group Name]..."
+      echo "Usage: tabgrouper -o <Group_Name...>"
   fi
   exit ;;
 
@@ -299,7 +299,7 @@ case "$option" in
     fi
   else
     echo "Invalid arguments :("
-    echo "Usage: tabgrouper -el [Group Name]"
+    echo "Usage: tabgrouper -el <Group_Name>"
   fi
   exit;;
 
