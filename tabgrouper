@@ -275,7 +275,7 @@ case "$option" in
   fi
   exit ;;
 
--el|--editlink) # edit links.
+-el|--editlinks) # edit links.
   if [ $# -eq 1 ]
   then
     group=$1
