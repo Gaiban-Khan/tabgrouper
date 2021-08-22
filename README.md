@@ -6,9 +6,18 @@ You can create multiple groups!
 
 > Example: You can have a group of websites for work. Using tabgrouper, you can open all the grouped websites easily at once!
 
-Add it to path and run it from everywhere.
+## Let's set things up! 🛠
 
-> Add tabgrouper file to /usr/local/bin.
+Add it to path and run it from everywhere. You can easily do it in 2 ways:
+
+**1**. Create a symlink to the tabgrouper file **(recommended)**.
+```bash
+sudo ln -s <Absolute path to the tabgrouper file> /usr/local/bin/tabgrouper
+```
+**OR**
+
+**2**. Add tabgrouper file to /usr/local/bin.  
+
 
 ## How to use? 🤔
 
